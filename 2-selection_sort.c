@@ -23,8 +23,8 @@ void swap(int *ele1, int *ele2)
 
 void selection_sort(int *array, size_t size)
 {
-	int key;
-	int i, j, index, swapped = 0;
+	int key, index;
+	int i, j, swapped = 0;
 
 	for (i = 0; i < (int)size - 1; i++)
 	{
@@ -42,6 +42,7 @@ void selection_sort(int *array, size_t size)
 		{
 			swap(&array[i], &array[index]);
 			print_array(array, size);
+			swapped = 0;
 		}
 	}
 }
