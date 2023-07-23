@@ -18,10 +18,9 @@ void swap(int *ele1, int *ele2)
  * @array: the sub array or array to sort.
  * @low: first index of the array (subarray).
  * @high: last index of the array (subarray).
- * @size: the size of the array
  * Return: the index of the pivot.
  */
-int lomuto_partition(int *array, int low, int high, size_t size)
+int lomuto_partition(int *array, int low, int high)
 {
 	int pivot = array[high];
 	int j = low - 1, i;
@@ -32,12 +31,10 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 		{
 			j++;
 			swap(&array[j], &array[i]);
-			print_array((const int *)array, size);
 		}
 	}
-	j++;
-	swap(&array[j], &array[high]);
-	return (j);
+	swap(&array[j + 1], &array[high]);
+	return (j + 1);
 }
 /**
  * quick_sort_rec - do the recursion for quick sort
@@ -52,9 +49,10 @@ void quick_sort_rec(int *array, int low, int high, size_t size)
 
 	if (low < high)
 	{
-		pivot_index = lomuto_partition(array, low, high, size);
+		pivot_index = lomuto_partition(array, low, high);
 		quick_sort_rec(array, low, pivot_index - 1, size);
 		quick_sort_rec(array, pivot_index + 1, high, size);
+		 print_array((const int *)array, size);
 	}
 }
 /**
