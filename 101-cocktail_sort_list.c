@@ -73,13 +73,11 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (curr->n > curr->next->n)
 			{
-				swapped = 1;
 				swap_nodes(list, &curr, &end);
 				print_list(*list);
+				swapped = 1;
 			}
 		}
-		if (!swapped)
-			break;
 		for (curr = curr->prev; curr != *list; curr = curr->prev)
 		{
 			if (curr->n < curr->prev->n)
