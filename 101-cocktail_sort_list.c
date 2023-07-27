@@ -80,12 +80,14 @@ void cocktail_sort_list(listint_t **list)
 		}
 		if (!swapped)
 			break;
-		for (curr = curr; curr != *list; curr = curr->prev)
+		for (curr = curr->prev; curr != *list; curr = curr->prev)
 		{
 			if (curr->n < curr->prev->n)
+			{
 				swap_back(list, &curr, &end);
-			print_list(*list);
-			swapped = 1;
+				print_list(*list);
+				swapped = 1;
+			}
 		}
 	}
 }
